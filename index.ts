@@ -1,6 +1,5 @@
-// Import stylesheets
-import './style.css';
-
-// Write TypeScript code!
-const appDiv: HTMLElement = document.getElementById('app');
-appDiv.innerHTML = `<h1>TypeScript Starter</h1>`;
+const log = (...anything) => {
+  const logDiv = document.createElement('div');
+  logDiv.innerText = anything.map((e) => JSON.stringify(e)).join(' ');
+  document.getElementById('app').appendChild(logDiv);
+};
