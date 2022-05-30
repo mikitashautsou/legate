@@ -2,5 +2,25 @@
   "name": "typescript",
   "version": "0.0.0",
   "private": true,
-  "dependencies": {}
+  "description": "[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/typescript-axtxe1)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikitashautsou/legate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikitashautsou/legate/issues"
+  },
+  "homepage": "https://github.com/mikitashautsou/legate#readme",
+  "dependencies": {
+    "@types/node": "^17.0.36",
+    "ts-node": "^10.8.0",
+    "typescript": "^4.7.2"
+  }
 }
