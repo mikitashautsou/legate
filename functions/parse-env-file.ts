@@ -1,14 +1,17 @@
 import * as fs from "fs";
+import { Edge, Graph } from "./graph/graph";
 
 export interface Atom {
   value: string;
 }
 
 export interface Relation {
+  type: 'relation'
   values: string[];
 }
 
 export interface EqRelation {
+  type: 'equal'
   param: string;
   value: Atom;
 }
@@ -42,7 +45,7 @@ export const parseEnvFile = (): Relation[] => {
       }
     )
     .result.map((line) => line.trim())
-    .map((line) => ({ values: line.split(" ") }));
+    .map((line) => ({ type: 'relation' as 'relation', values: line.split(" ") }));
 
   return relations;
 };

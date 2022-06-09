@@ -7,4 +7,7 @@ const relations = parseEnvFile();
 const atoms = extractAtoms(relations);
 const normalizedRelations = normalizeRelations(relations);
 
-console.log(JSON.stringify({ atoms, relations, normalizedRelations }, null, 2));
+
+// console.log(JSON.stringify({ atoms, relations, normalizedRelations }, null, 2));
+console.log(JSON.stringify({ normalizedRelations }, null, 2));
+// console.log(normalizedRelations.map(nr => nr.values.join(' ')))
