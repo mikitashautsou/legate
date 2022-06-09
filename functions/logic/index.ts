@@ -22,16 +22,33 @@ type IRule = ReturnType<typeof Rule>
 type IFact = ReturnType<typeof Fact>
 type IDatabase = IFact[]
 
+// const database: IDatabase = [
+//     Fact('IS', 'SOCRAT', 'HUMAN'),
+// ]
+
+// const rules = [
+//     Rule(
+//         [Fact('IS', '$A', 'HUMAN')],
+//         [Fact('IS', '$A', 'MORTAL')]
+//     )
+// ]
+
 const database: IDatabase = [
-    Fact('IS', 'SOCRAT', 'HUMAN'),
+    Fact('PARENT', 'SON', 'DAD'),
+    Fact('PARENT', 'DAD', 'GRANDDAD'),
 ]
 
 const rules = [
     Rule(
-        [Fact('IS', '$A', 'HUMAN')],
-        [Fact('IS', '$A', 'MORTAL')]
+        [Fact('PARENT', '$A', '$B')],
+        [Fact('PREDECESSOR', '$A', '$B')]
+    ),
+    Rule(
+        [Fact('PREDECESSOR', '$A', '$B'), Fact('PREDECESSOR', '$B', '$C')],
+        [Fact('PREDECESSOR', '$A', '$C')]
     )
 ]
+
 
 const onlyUnique = (value: any, index: any, self: any) => self.indexOf(value) === index;
 const isVariable = (param: string) => param.startsWith('$')
@@ -62,6 +79,7 @@ const applyRule = (database: IDatabase, rule: IRule) => {
                         }))
                     }
                     applyRule(database, partiallyBoundedRule)
+                    break;
                 }
             }
         }
@@ -74,9 +92,15 @@ const applyRule = (database: IDatabase, rule: IRule) => {
 
 }
 
-for (const rule of rules) {
 
-    applyRule(database, rule)
-
+const applyRules = () => {
+    let databaseSizeBeforeRulesApplying = database.length
+    for (const rule of rules) {
+        applyRule(database, rule)
+    }
+    if (databaseSizeBeforeRulesApplying !== database.length) {
+        applyRules()
+    }
 }
+applyRules()
 console.log(database)
