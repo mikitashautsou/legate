@@ -1,10 +1,37 @@
 
 
 
+import prompt from 'prompt-sync'
+import fs from 'fs'
 
+const question = prompt({})
 
+const ifThen = (conditionalFunc: any, ifTrue: any) => () => conditionalFunc() ? ifTrue() : undefined
 
+const logMessage = (message) => () => console.log('INFO: ', message)
 
+const saveKnowledge = (database, rules) => {
+    fs.writeFileSync(`knowledge/knowledge-${Date.now()}.json`, JSON.stringify({
+        database,
+        rules
+    }, null, 2))
+}
+
+const loadKnowledge = () => {
+    try {
+        const result = fs.readdirSync('knowledge/').sort().reverse()[0]
+        return JSON.parse(fs.readFileSync(`knowledge/${result}`).toString())
+    } catch (e) {
+        return {
+            database: [],
+            rules: []
+        }
+    }
+}
+const pipe = (...functions: any[]) => functions.reduce((p: any, f: any) => {
+    console.log(`INPUT: ${JSON.stringify(p, null, 2)}`)
+    return f(p)
+}, undefined)
 
 const Fact = (name: string, ...values: string[]) => ({
     type: 'fact',
@@ -22,6 +49,7 @@ type IRule = ReturnType<typeof Rule>
 type IFact = ReturnType<typeof Fact>
 type IDatabase = IFact[]
 
+const { database, rules } = loadKnowledge()
 // const database: IDatabase = [
 //     Fact('IS', 'SOCRAT', 'HUMAN'),
 // ]
@@ -33,25 +61,44 @@ type IDatabase = IFact[]
 //     )
 // ]
 
-const database: IDatabase = [
-    Fact('PARENT', 'SON', 'DAD'),
-    Fact('PARENT', 'DAD', 'GRANDDAD'),
-]
+// const database: IDatabase = [
+//     Fact('PARENT', 'SON', 'DAD'),
+//     Fact('PARENT', 'DAD', 'GRANDDAD'),
+//     Fact('IS', '1', 'NUMBER'),
+//     Fact('IS', '2', 'NUMBER'),
+//     Fact('IS', '3', 'NUMBER'),
+//     Fact('IS', '4', 'NUMBER'),
+//     Fact('NEXT', '1', '2'),
+//     Fact('NEXT', '2', '3'),
+//     Fact('NEXT', '3', '4'),
+// ]
 
-const rules = [
-    Rule(
-        [Fact('PARENT', '$A', '$B')],
-        [Fact('PREDECESSOR', '$A', '$B')]
-    ),
-    Rule(
-        [Fact('PREDECESSOR', '$A', '$B'), Fact('PREDECESSOR', '$B', '$C')],
-        [Fact('PREDECESSOR', '$A', '$C')]
-    )
-]
+// const rules = [
+//     Rule(
+//         [Fact('PARENT', '$A', '$B')],
+//         [Fact('PREDECESSOR', '$A', '$B')]
+//     ),
+//     Rule(
+//         [Fact('PREDECESSOR', '$A', '$B'), Fact('PREDECESSOR', '$B', '$C')],
+//         [Fact('PREDECESSOR', '$A', '$C')]
+//     ),
+//     Rule(
+//         [Fact('IS', '$B', 'NUMBER'), Fact('IS', '$A', 'NUMBER'), Fact('NEXT', '$A', '$B')],
+//         [Fact('LESS', '$A', '$B')]
+//     ),
+//     Rule(
+//         [Fact('LESS', '$A', '$B'), Fact('LESS', '$B', '$C')],
+//         [Fact('LESS', '$A', '$C')]
+//     ),
+//     Rule(
+//         [Fact('LESS', '$A', '$B')],
+//         [Fact('MORE', '$B', '$A')]
+//     )
+// ]
 
 
 const onlyUnique = (value: any, index: any, self: any) => self.indexOf(value) === index;
-const isVariable = (param: string) => param.startsWith('$')
+const isVariable = (param: string) => param.startsWith('$') || param === '*'
 const findUnboundVariables = (rule: IRule) => rule.premises.concat(rule.conclusions).flatMap((e) => e.values).filter(isVariable).filter(onlyUnique)
 const isFactTrue = (database: IDatabase, fact: IFact) => database.some(f => f.name === fact.name && f.values.every((v, i) => fact.values[i] === v))
 const queryFacts = (database: IDatabase, pattern: IFact) => database.filter(f => f.name === pattern.name && f.values.every((v, i) => pattern.values[i] === v || isVariable(pattern.values[i])))
@@ -103,4 +150,72 @@ const applyRules = () => {
     }
 }
 applyRules()
-console.log(database)
+
+
+const parseFact = (command) => {
+    const [factName, factOperandsRaw] = command.split('(')
+    const factOperands = factOperandsRaw.slice(0, -1).split(',')
+    return {
+        name: factName,
+        type: 'fact',
+        values: factOperands,
+    }
+}
+
+
+const factToString = (fact: IFact) => `${fact.name}(${fact.values.join(', ')})`
+let ruleInputStage = 'none'
+let rule: IRule | null = null
+while (true) {
+    const command = question({}).toUpperCase().trim().replace(/\s+/g, '')
+    if (command === 'GIVEN') {
+        ruleInputStage = 'premises'
+        rule = {
+            type: 'rule',
+            conclusions: [],
+            premises: [],
+        }
+        continue
+    } else if (command === 'THEN') {
+        ruleInputStage = 'conclusions'
+        continue
+    } else if (command === 'END' && rule) {
+        ruleInputStage = 'none'
+        rules.push(rule)
+        rule = null
+        continue
+    } else if (command.startsWith('?')) {
+        const pattern = parseFact(command.slice(1))
+        const facts = queryFacts(database, pattern)
+        console.log(facts.map(factToString).join('\n'))
+    } else if (command === 'SHOW') {
+        console.log(database.map(factToString).join('\n'))
+    } else if (rule && ruleInputStage === 'premises') {
+        const newFact = parseFact(command)
+        rule.premises.push(newFact)
+        console.log('PREMISE ADDED')
+    } else if (rule && ruleInputStage === 'conclusions') {
+        const newFact = parseFact(command)
+        rule.conclusions.push(newFact)
+        console.log('CONCLUSION ADDED')
+    } else {
+        try {
+            const newFact = parseFact(command)
+            if (isFactTrue(database, newFact)) {
+                console.log('FACT ALREADY KNOWN')
+                continue
+            }
+            database.push(newFact)
+            console.log('1 FACT ACKNOWLEDGED')
+        } catch (e) {
+            console.log('INVALID FORMAT')
+        }
+    }
+    const databaseSize = database.length
+    applyRules()
+    if (databaseSize !== database.length) {
+        console.log(`${database.length - databaseSize} FACTS HAVE BEEN PRODUCED`)
+    }
+    saveKnowledge(database, rules)
+}
+

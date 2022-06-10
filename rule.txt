@@ -1,0 +1,71 @@
+IS(1, NUMBER)
+IS(2, NUMBER)
+IS(3, NUMBER)
+NEXT(1, 2)
+NEXT(2, 3)
+LESS(1, 2)
+LESS(2, 3)
+MORE(1, 2)
+MORE(2, 3)
+
+SUM(1,1, 2)
+
+
+GIVEN
+    IS($1, NUMBER)
+    NEXT($1, $2)
+THEN
+    SUM($1, 1, $2)
+END
+
+
+GIVEN
+    SUM($1, $4, $5)
+    NEXT($4, $2)
+    NEXT($5, $3)
+THEN
+    SUM($1, $2, $3)
+END
+
+GIVEN
+    SUM($1, $4, $5)
+THEN
+    SUM($4, $1, $5)
+END
+
+GIVEN
+    NEXT($1,$2)
+THEN
+    LESS($1,$2)
+END
+
+GIVEN
+    LESS($1,$2)
+    LESS($2,$3)
+THEN
+    LESS($1,$3)
+END
+
+
+
+
+GIVEN
+SUM($1,$2,$3)
+THEN
+SUBTRACT($3,$1, $2)
+SUBTRACT($3, $2, $1)
+END
+
+GIVEN
+SUM($2, $2, $4)
+THEN
+PRODUCT($2,$2,$4)
+END
+
+GIVEN
+PRODUCT($1, $2, $3)
+NEXT($2,$4)
+SUM($3, $1, $5)
+THEN
+PRODUCT($1,$4,$)
+END
