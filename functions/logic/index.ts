@@ -11,6 +11,9 @@ const ifThen = (conditionalFunc: any, ifTrue: any) => () => conditionalFunc() ? 
 const logMessage = (message) => () => console.log('INFO: ', message)
 
 const saveKnowledge = (database, rules) => {
+    if (!fs.existsSync('knowledge')) {
+        fs.mkdirSync('knowledge')
+    }
     fs.writeFileSync(`knowledge/knowledge-${Date.now()}.json`, JSON.stringify({
         database,
         rules
@@ -50,52 +53,6 @@ type IFact = ReturnType<typeof Fact>
 type IDatabase = IFact[]
 
 const { database, rules } = loadKnowledge()
-// const database: IDatabase = [
-//     Fact('IS', 'SOCRAT', 'HUMAN'),
-// ]
-
-// const rules = [
-//     Rule(
-//         [Fact('IS', '$A', 'HUMAN')],
-//         [Fact('IS', '$A', 'MORTAL')]
-//     )
-// ]
-
-// const database: IDatabase = [
-//     Fact('PARENT', 'SON', 'DAD'),
-//     Fact('PARENT', 'DAD', 'GRANDDAD'),
-//     Fact('IS', '1', 'NUMBER'),
-//     Fact('IS', '2', 'NUMBER'),
-//     Fact('IS', '3', 'NUMBER'),
-//     Fact('IS', '4', 'NUMBER'),
-//     Fact('NEXT', '1', '2'),
-//     Fact('NEXT', '2', '3'),
-//     Fact('NEXT', '3', '4'),
-// ]
-
-// const rules = [
-//     Rule(
-//         [Fact('PARENT', '$A', '$B')],
-//         [Fact('PREDECESSOR', '$A', '$B')]
-//     ),
-//     Rule(
-//         [Fact('PREDECESSOR', '$A', '$B'), Fact('PREDECESSOR', '$B', '$C')],
-//         [Fact('PREDECESSOR', '$A', '$C')]
-//     ),
-//     Rule(
-//         [Fact('IS', '$B', 'NUMBER'), Fact('IS', '$A', 'NUMBER'), Fact('NEXT', '$A', '$B')],
-//         [Fact('LESS', '$A', '$B')]
-//     ),
-//     Rule(
-//         [Fact('LESS', '$A', '$B'), Fact('LESS', '$B', '$C')],
-//         [Fact('LESS', '$A', '$C')]
-//     ),
-//     Rule(
-//         [Fact('LESS', '$A', '$B')],
-//         [Fact('MORE', '$B', '$A')]
-//     )
-// ]
-
 
 const onlyUnique = (value: any, index: any, self: any) => self.indexOf(value) === index;
 const isVariable = (param: string) => param.startsWith('$') || param === '*'
@@ -184,8 +141,8 @@ while (true) {
         rules.push(rule)
         rule = null
         continue
-    } else if (command.startsWith('?')) {
-        const pattern = parseFact(command.slice(1))
+    } else if (!rule && (command.startsWith('?') || command.includes('$') || command.includes('*'))) {
+        const pattern = parseFact(command.startsWith('?') ? command.slice(1) : command)
         const facts = queryFacts(database, pattern)
         console.log(facts.map(factToString).join('\n'))
     } else if (command === 'SHOW') {
@@ -212,10 +169,16 @@ while (true) {
         }
     }
     const databaseSize = database.length
+    const rulesSize = rules.length
     applyRules()
     if (databaseSize !== database.length) {
         console.log(`${database.length - databaseSize} FACTS HAVE BEEN PRODUCED`)
+        saveKnowledge(database, rules)
     }
-    saveKnowledge(database, rules)
+    if (rulesSize !== rules.length) {
+        console.log(`${rules.length - rulesSize} RULES HAVE BEEN ADDED`)
+        saveKnowledge(database, rules)
+    }
 }
+
 

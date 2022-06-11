@@ -26,4 +26,5 @@ const getRepetitiveFactor = (pattern: (EqRelation | Relation)[], knowledge: (EqR
     }
     const occurenceEntryPoints = []
 
+
 }
