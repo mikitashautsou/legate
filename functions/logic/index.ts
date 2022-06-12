@@ -7,6 +7,7 @@ const question = prompt({})
 const start = async () => {
     const database = loadKnowledge()
 
+    console.log(`:D READY FOR WORK`)
     parseInput(() => question({}), database)
 }
 

@@ -1,5 +1,5 @@
 
-import { applyRules, isFactTrue, queryFacts } from './facts-manipulation'
+import { applyRules, drainFacts, evictFact, isFactTrue, queryFacts } from './facts-manipulation'
 import { saveKnowledge } from './io'
 import { IFacts, IFact, IRule, IDatabase } from './models'
 
@@ -21,7 +21,7 @@ END
     `
 }
 
-const normalizeUserInput = (userInput: string) => userInput.toUpperCase().trim().replace(/\s+/g, '')
+const normalizeUserInput = (userInput: string) => userInput.toUpperCase().trim()
 
 type Reader = () => string
 
@@ -41,10 +41,17 @@ export const parseInput = (getNextLine: Reader, database: IDatabase) => {
             if (rule) {
                 database.rules.push(rule)
             }
-        } else if (!rule && (command.startsWith('?') || command.includes('$') || command.includes('*'))) {
+        } else if (command === 'DRAIN') {
+            drainFacts(database)
+            console.log('DATABASED DRAINED')
+        }
+        else if (!rule && (command.startsWith('?') || command.includes('$') || command.includes('*'))) {
             const pattern = parseFact(command.startsWith('?') ? command.slice(1) : command)
             const facts = queryFacts(database.facts, pattern)
             console.log(facts.map(factToString).join('\n'))
+        } else if (command.startsWith('NOT ')) {
+            const factToEvict = parseFact(command.split('NOT ')[1])
+            evictFact(database, factToEvict)
         } else {
             try {
                 const newFact = parseFact(command)
@@ -94,21 +101,39 @@ const parseRule = (getNextLine: Reader): IRule | null => {
     }
 }
 
-const parseFact = (command) => {
+const parseFact = (command): IFact => {
+    command = command.replace(/\s+/g, '')
     const [factName, factOperandsRaw] = command.split('(')
     const factOperands = factOperandsRaw.slice(0, -1).split(',')
     return {
         name: factName,
         type: 'fact',
         values: factOperands,
+        source: 'external'
     }
 }
 
 const syncDatabase = (database: IDatabase, rulesCountBeforeIteration: number, factsCountBeforeIteration: number) => {
+    let syncIsNeeded = false
     applyRules(database)
-    if (factsCountBeforeIteration !== database.facts.length || rulesCountBeforeIteration !== database.rules.length) {
+
+    if (factsCountBeforeIteration < database.facts.length) {
         console.log(`:) ${database.facts.length - factsCountBeforeIteration} FACTS HAVE BEEN PRODUCED`)
-        console.log(`:) ${database.rules.length - rulesCountBeforeIteration} RULES HAVE BEEN PRODUCED`)
+        syncIsNeeded = true
+    } else if (factsCountBeforeIteration > database.facts.length) {
+        console.log(`:) ${factsCountBeforeIteration - database.facts.length} FACTS HAVE BEEN EVICTED`)
+        syncIsNeeded = true
+    }
+    if (rulesCountBeforeIteration < database.rules.length) {
+        console.log(`:) ${database.rules.length - rulesCountBeforeIteration} FACTS HAVE BEEN PRODUCED`)
+        syncIsNeeded = true
+
+    } else if (rulesCountBeforeIteration > database.rules.length) {
+        console.log(`:) ${rulesCountBeforeIteration - database.rules.length} RULES HAVE BEEN PRODUCED`)
+        syncIsNeeded = true
+
+    }
+    if (syncIsNeeded) {
         saveKnowledge(database)
     }
 }

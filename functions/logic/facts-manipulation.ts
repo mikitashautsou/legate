@@ -7,6 +7,45 @@ export const isFactTrue = (database: IFacts, fact: IFact) => database.some(f => 
 export const queryFacts = (database: IFacts, pattern: IFact) => database.filter(f => f.name === pattern.name && f.values.every((v, i) => pattern.values[i] === v || isVariable(pattern.values[i])))
 
 
+export const applyRule = (facts: IFacts, rule: IRule) => {
+    const unboundedVariables = findUnboundVariables(rule)
+
+    if (unboundedVariables.length > 0) {
+        const [firstUnboundedVariable] = unboundedVariables
+        const [factWithUnboundedVariable] = rule.premises.concat(rule.conclusions).filter(f => f.values.some(v => v === firstUnboundedVariable))
+        const boundedFacts = queryFacts(facts, factWithUnboundedVariable)
+        for (const boundedFact of boundedFacts) {
+            const partiallyBoundedRule = boundPatternVariable(rule, boundedFact, factWithUnboundedVariable, firstUnboundedVariable)
+            if (partiallyBoundedRule) {
+                applyRule(facts, partiallyBoundedRule)
+            }
+
+        }
+    } else if (rule.premises.every(p => isFactTrue(facts, p))) {
+        facts.push(...rule.conclusions.filter(c => !isFactTrue(facts, c)).map(fact => ({
+            ...fact,
+            source: 'produced' as 'produced'
+        })))
+    }
+
+}
+
+export const applyRules = (database: IDatabase) => {
+    let databaseSizeBeforeRulesApplying = database.facts.length
+    for (const rule of database.rules) {
+        applyRule(database.facts, rule)
+    }
+    if (databaseSizeBeforeRulesApplying !== database.facts.length) {
+        applyRules(database)
+    }
+}
+
+
+export const drainFacts = (database: IDatabase) => {
+    database.facts = database.facts.filter(f => f.source !== 'produced')
+    applyRules(database)
+}
+
 const boundPatternVariable = (rule: IRule, boundedFact: IFact, pattern: IFact, unboundedVariableName: string) => {
     for (let componentIndex = 0; componentIndex < boundedFact.values.length; componentIndex++) {
         if (isVariable(pattern.values[componentIndex])) {
@@ -27,33 +66,6 @@ const boundPatternVariable = (rule: IRule, boundedFact: IFact, pattern: IFact, u
     }
 }
 
-export const applyRule = (facts: IFacts, rule: IRule) => {
-    const unboundedVariables = findUnboundVariables(rule)
-
-    if (unboundedVariables.length > 0) {
-        const [firstUnboundedVariable] = unboundedVariables
-        const [factWithUnboundedVariable] = rule.premises.concat(rule.conclusions).filter(f => f.values.some(v => v === firstUnboundedVariable))
-        const boundedFacts = queryFacts(facts, factWithUnboundedVariable)
-        for (const boundedFact of boundedFacts) {
-            const partiallyBoundedRule = boundPatternVariable(rule, boundedFact, factWithUnboundedVariable, firstUnboundedVariable)
-            if (partiallyBoundedRule) {
-                applyRule(facts, partiallyBoundedRule)
-            }
-
-        }
-    } else if (rule.premises.every(p => isFactTrue(facts, p))) {
-        facts.push(...rule.conclusions.filter(c => !isFactTrue(facts, c)))
-    }
-
+export const evictFact = (database: IDatabase, pattern: IFact) => {
+    database.facts = database.facts.filter(f => f.name !== pattern.name || !f.values.every((v, i) => pattern.values[i] === v || isVariable(pattern.values[i])))
 }
-
-export const applyRules = (database: IDatabase) => {
-    let databaseSizeBeforeRulesApplying = database.facts.length
-    for (const rule of database.rules) {
-        applyRule(database.facts, rule)
-    }
-    if (databaseSizeBeforeRulesApplying !== database.facts.length) {
-        applyRules(database)
-    }
-}
-
