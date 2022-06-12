@@ -69,3 +69,74 @@ SUM($3, $1, $5)
 THEN
 PRODUCT($1,$4,$)
 END
+
+
+PRODUCE
+    let i = 0;
+    while (i < 10000) {
+        i++
+    }
+    return {
+        "$1": i,
+        "$2", i + 1
+    }
+AS
+    IS(NUMBER, $1)
+    NEXT($1, $2)
+END
+
+PRODUCE
+
+
+
+GIVEN
+NATIVE($INDEX) {
+    const prices = fs.readFileSync(...)
+    return {
+        $VALUE: prices[$INDEX] 
+    }
+}
+THEN
+PRICE(EURUSD, $INDEX, $VALUE)
+END
+
+
+
+
+
+
+
+VALUE(A, 0)
+VALUE(B, 1)
+VALUE(C, 0)
+VALUE(D, 1)
+VALUE(E, 0)
+
+
+VALUE(A, 1)
+VALUE(B, 0)
+VALUE(C, 1)
+VALUE(D, 0)
+VALUE(E, 0)
+VALUE(F, 1)
+VALUE(G, 0)
+VALUE(H, 0)
+VALUE(I, 0)
+VALUE(J, 1)
+VALUE(K, 1)
+-----
+VALUE($, $)
+
+
+
+
+SECTION(A, $1, 1)
+SECTION($1, $2, 2)
+
+A B D G
+
+
+->
+SECTION(A, $1)
+SECTION(A, $1)
+
