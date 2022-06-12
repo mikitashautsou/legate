@@ -21,7 +21,12 @@ END
     `
 }
 
-const normalizeUserInput = (userInput: string) => userInput.toUpperCase().trim()
+const normalizeUserInput = (userInput: string) => {
+    if (userInput === null) {
+        return null
+    }
+    return userInput.toUpperCase().trim()
+}
 
 type Reader = () => string
 
@@ -31,6 +36,10 @@ export const parseInput = (getNextLine: Reader, database: IDatabase) => {
         let rulesCountBeforeIteration = database.rules.length
         let factsCountBeforeIteration = database.facts.length
         const command = normalizeUserInput(getNextLine())
+        if (command === null) {
+            console.log(`:) TERMINATING`)
+            break;
+        }
         if (command === 'SHOW') {
             console.log('======== FACTS ========')
             console.log(database.facts.map(factToString).join('\n'))
