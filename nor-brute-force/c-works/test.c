@@ -1,7 +1,8 @@
-#include <stdio.h>
 
+int x = 0;
 int main()
 {
 
-   printf("everything went well %d", 3);
+   x += 1;
+   printf("%d", x)
 }

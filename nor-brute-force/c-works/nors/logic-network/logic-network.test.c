@@ -4,15 +4,16 @@
 
 #include "logic-network.h"
 
+
+
+int main()
+{
+
 LogicNetwork(GRAPH_1, 100, 1, 1, 1000);
 LogicNetwork(GRAPH_2, 100, 2, 1, 1000);
 LogicNetwork(GRAPH_3, 100, 2, 1, 1000);
 LogicNetwork(GRAPH_4, 100, 2, 1, 1000);
 LogicNetwork(GRAPH_5, 100, 2, 1, 1000);
-
-int main()
-{
-
     TEST("logic network")
 
     // TEST_BLOCK("simple input-output case");

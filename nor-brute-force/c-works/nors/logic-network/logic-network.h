@@ -44,12 +44,12 @@
     const int logic_network_##network##_OUTPUTS_COUNT = outputs_count;                                                                                                                       \
     const int logic_network_##network##_IO_COUNT = logic_network_##network##_INPUTS_COUNT + logic_network_##network##_OUTPUTS_COUNT;                                                         \
     const int logic_network_##network##_MAX_NODES_TO_BE_EXECUTED = max_nodes_to_be_executed;                                      /* replace with dynamic resizing */                        \
-    int logic_network_##network##_CONNECTIONS[logic_network_##network##_MAX_NODES][logic_network_##network##_MAX_NODES][2] = {0}; /* TODO: use binary number representation instead of 2? */ \
+    int logic_network_##network##_CONNECTIONS[max_nodes][max_nodes][2] = {0}; /* TODO: use binary number representation instead of 2? */ \
     int logic_network_##network##_SIZE = logic_network_##network##_INPUTS_COUNT + logic_network_##network##_OUTPUTS_COUNT;                                                                   \
-    int logic_network_##network##_INPUT_VALUES[logic_network_##network##_INPUTS_COUNT] = {0};                                                                                                \
-    CircularArray(logic_network_##network##_ACTIVATED_NODES, logic_network_##network##_MAX_NODES_TO_BE_EXECUTED, int);                                                                       \
-    int logic_network_##network##_NODE_VALUES[logic_network_##network##_MAX_NODES] = {0};                                                                                                    \
-    int logic_network_##network##_EDGES_VALUES[logic_network_##network##_MAX_NODES][logic_network_##network##_MAX_NODES][2] = {0}; /*2 - for left/right inputs*/                             \
+    int logic_network_##network##_INPUT_VALUES[inputs_count] = {0};                                                                                                \
+    CircularArray(logic_network_##network##_ACTIVATED_NODES, max_nodes_to_be_executed, int);                                                                       \
+    int logic_network_##network##_NODE_VALUES[max_nodes] = {0};                                                                                                    \
+    int logic_network_##network##_EDGES_VALUES[max_nodes][max_nodes][2] = {0}; /*2 - for left/right inputs*/                             \
     int is_last_execution_successfull_logic_netwok_##network = 1;
 
 #define logic_network_get_inputs_count(network) logic_network_##network##_INPUTS_COUNT
@@ -81,7 +81,7 @@
 #define set_inputs(network)                                                                                      \
     ({                                                                                                           \
         print("set_inputs > starting...\n");                                                                     \
-        logic_network_print_config(network);                                                                     \
+        logic_network_print_edges_config(network);                                                                     \
                                                                                                                  \
         for (int i = 0; i < logic_network_##network##_INPUTS_COUNT; i += 1)                                      \
         {                                                                                                        \
