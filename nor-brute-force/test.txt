@@ -1,0 +1,47 @@
+
+
+
+
+
+MAX_NODES = 10
+GRAPHS_COUNT = 2
+
+STRUCTURIZE(
+    GRAPH: {
+        NODES_VALUES [MAX_NODES]
+        CONNECTION_MAP[MAX_NODES][MAX_NODES]
+    }
+)
+STRUCTURIZE(GRAPH[GRAPHS_COUNT][MAX_NODES][MAX_NODES])
+GRAPH_1 = GRAPH[0]
+GRAPH_2 = GRAPH[1]
+
+// GRAPH = 2 * 10 * 10 => size: 200
+
+
+proc create_graph(max_size) {
+    for (i = 0; i < max_size; i++) {
+        for (j = 0; j < max_size;j++) {
+            GRAPH_1[i][j] = false
+        }
+    }
+}
+
+proc add_node(graph_id) {
+    node = ID()
+}
+
+proc add_connection(graph, from, to) {
+    graph[from][to] = true
+}
+
+
+proc run_network(network) {
+    GRAPH[network][NODE_VALUES][]
+}
+
+create_graph(GRAPH_1)
+create_graph(GRAPH_2)
+
+
+

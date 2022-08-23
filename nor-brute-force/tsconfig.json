@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "types": [
+            "jest",
+            "node",
+            "@types/jest"
+        ],
+        "target": "ESNext"
+    }
+}

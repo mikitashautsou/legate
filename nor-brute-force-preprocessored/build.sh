@@ -1,0 +1,1 @@
+node main.js > source.c && gcc source.c -ocompiled && ./compiled

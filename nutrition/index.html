@@ -1,0 +1,203 @@
+<html>
+<head>
+ <title>The Mastermind Game</title>
+</head>
+<body>
+<div align="center"><h1>The Mastermind Game</div>
+
+<p>
+Choose of a combination of four coloured beds in a certain order. You can choose from six colours (red <img src="red.png" />, yellow <img src="yellow.png" />, green <img src="green.png" />, blue <img src="blue.png" />, black <img src="black.png" /> and white <img src="white.png" />, using the same colour more than once if you want) and write it down. I will try to guess your combination based on your feedback. If I can work it out in 10 goes or less, I win. Otherwise, you win. Click the button below when you have chosen your combination.
+</p>
+
+<div align="center"><input type="button" value="Click here to start" onclick="initialise();" /></div>
+
+<table border="1" cellspacing="0" cellpadding="2">
+ <tr>
+  <td>1</td>
+  <td><span name="row0" id="row0"></span></td>
+  <td><span name="mark0" id="mark0"></span></td>
+ </tr>
+ <tr>
+  <td>2</td>
+  <td><span name="row1" id="row1"></span></td>
+  <td><span name="mark1" id="mark1"></span></td>
+ </tr>
+ <tr>
+  <td>3</td>
+  <td><span name="row2" id="row2"></span></td>
+  <td><span name="mark2" id="mark2"></span></td>
+ </tr>
+ <tr>
+  <td>4</td>
+  <td><span name="row3" id="row3"></span></td>
+  <td><span name="mark3" id="mark3"></span></td>
+ </tr>
+ <tr>
+  <td>5</td>
+  <td><span name="row4" id="row4"></span></td>
+  <td><span name="mark4" id="mark4"></span></td>
+ </tr>
+ <tr>
+  <td>6</td>
+  <td><span name="row5" id="row5"></span></td>
+  <td><span name="mark5" id="mark5"></span></td>
+ </tr>
+ <tr>
+  <td>7</td>
+  <td><span name="row6" id="row6"></span></td>
+  <td><span name="mark6" id="mark6"></span></td>
+ </tr>
+ <tr>
+  <td>8</td>
+  <td><span name="row7" id="row7"></span></td>
+  <td><span name="mark7" id="mark7"></span></td>
+ </tr>
+ <tr>
+  <td>9</td>
+  <td><span name="row8" id="row8"></span></td>
+  <td><span name="mark8" id="mark8"></span></td>
+ </tr>
+ <tr>
+  <td>10</td>
+  <td><span name="row9" id="row9"></span></td>
+  <td><span name="mark9" id="mark9"></span></td>
+ </tr>
+</table>
+
+</body>
+<script language="JavaScript">
+var colours = ["red","yellow","green","blue","black","white"];
+var row;        // Indicates which number move the computer is making
+var NUM_ROWS = 10;
+var t = new Array();      // Holds the combination being tested
+var list = new Array();     // Build up the possible combinations here
+var list_length;
+
+function initialise ()
+{ row = 0;                                   // First move of the game
+  for (var c = 0; c < NUM_ROWS; c++)         // Blank out grid on screen
+   { document.getElementById("row" + c).innerHTML = "";
+     document.getElementById("mark" + c).innerHTML = "";
+   }
+  for (c = 0; c < 4; c++)                    // First guess is random
+   t[c] = Math.floor(Math.random() * 6);
+  display_pattern();
+}
+
+function bd (peg)
+{ return "<img src='" + colours[peg] + ".png' />";
+}
+
+function sel (nme)
+{ return "Number of " + nme + " pegs? <select name='" + nme + "' id='" + nme + "'>" +
+         "<option value='0'>0</option><option value='1'>1</option>" +
+         "<option value='2'>2</option><option value='3'>3</option>" +
+         "<option value='4'>4</option></select>";
+}
+
+function display_pattern ()
+{ document.getElementById("row" + row).innerHTML = bd(t[0]) + bd(t[1]) + bd(t[2]) + bd(t[3]);
+  document.getElementById("mark" + row).innerHTML = sel("black") + " " + sel("white") +
+        "<input type='button' value='Done' onclick='done_row();' />";
+}
+
+function done_row ()
+{ var num_blacks = eval(document.getElementById("black").value);
+  var num_whites = eval(document.getElementById("white").value);
+  var s = "";   // Replace select lists with pegs
+  if (num_blacks > 0)
+   { for (var pg = 0; pg < num_blacks; pg++)
+       s += "<img src='small black.png' />";
+   }
+  if (num_whites > 0)
+   { for (var pg = 0; pg < num_whites; pg++)
+       s += "<img src='small white.png' />";
+   }
+  document.getElementById("mark" + row).innerHTML = s;
+  var score = 10 * num_blacks + num_whites;
+  if (score == 40)
+   { alert("I have won the game! To play again, click the start button.");
+   }
+  else
+   { if (row == 0)
+       construct_list(score);
+     else
+       whittle_list(score);
+   }
+}
+
+// Construct the list based on marks for first guess
+// Go through all possibilities and include all patterns that fit
+// the marks for the first t
+function construct_list (score)
+{ row = 1;  // Indicates no longer first guess
+  list_length = 0;
+  for (var b1 = 0; b1 < 6; b1++)
+   for (var b2 = 0; b2 < 6; b2++)
+    for (var b3 = 0; b3 < 6; b3++)
+     for (var b4 = 0; b4 < 6; b4++)
+      if (score == mark(b1,b2,b3,b4))
+       { // Possible combination so add it to the list
+         list[list_length] = [b1,b2,b3,b4];
+         list_length++;
+       }
+  // Now pick a random combination from the possibles
+  t = list[Math.floor(Math.random() * list_length)];
+  display_pattern();
+}
+
+// Whittle down list
+function whittle_list (score)
+{ row++;
+  if (row == NUM_ROWS)
+   alert("Well done, you have beaten me. To play again, click the start button.");
+  else
+   { var r = 0;   // Goes through the rows
+     while (r < list_length)
+      { if (score == mark(list[r][0],list[r][1],list[r][2],list[r][3]))
+          r++;   // This combination works, so keep it
+        else
+         { var r2 = r;   // This can't be the true combination, so remove it
+           while (r2 < list_length-1)
+            { list[r2] = list[r2+1];
+              r2++;
+            }
+           list_length--;
+         }
+      }
+     if (list_length < 1)
+       alert("A mistake has been made somewhere. To play again, click the start button.");
+     else
+      { // Now pick a random combination from the possibles
+        t = list[Math.floor(Math.random() * list_length)];
+        display_pattern();
+      }
+   }
+}
+
+// Mark a given peg choice against a particular pattern
+// Returns results in score = 10 * number of blacks + number of whites
+function mark (pat1, pat2, pat3, pat4)
+{ var sc = 0;
+  // Create an independent copies of patterns being compared
+  var test_comb = [t[0],t[1],t[2],t[3]];
+  var test_pat = [pat1, pat2, pat3, pat4];
+  // Have to test for black pegs first
+  for (var c = 0; c < 4; c++)
+    if (test_comb[c] == test_pat[c])
+     { sc += 10;
+       test_comb[c] = -1;  // Disable for rest of this function
+       test_pat[c] = -2;
+     }
+  // Test for white peg
+  for (c = 0; c < 4; c++)
+   for (var d = 0; d < 4; d++)
+     if (test_comb[c] == test_pat[d])
+      { sc++;
+        test_comb[c] = -1;
+        test_pat[d] = -2;
+      }
+  return sc;
+}
+</script>
+</html>

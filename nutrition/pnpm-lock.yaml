@@ -1,0 +1,19 @@
+lockfileVersion: 5.4
+
+specifiers:
+  canonical-ga: ^0.0.2
+  csv-parse: ^5.3.0
+
+dependencies:
+  canonical-ga: 0.0.2
+  csv-parse: 5.3.0
+
+packages:
+
+  /canonical-ga/0.0.2:
+    resolution: {integrity: sha512-99+V2ptDTaSxBYYNnml7bcYqLlcJI5XQDupkuZGyg7aj+J6vt+SEYNfbI+nPrQ5dPDnVGAWR7X7z4M11xjIieA==}
+    dev: false
+
+  /csv-parse/5.3.0:
+    resolution: {integrity: sha512-UXJCGwvJ2fep39purtAn27OUYmxB1JQto+zhZ4QlJpzsirtSFbzLvip1aIgziqNdZp/TptvsKEV5BZSxe10/DQ==}
+    dev: false

@@ -1,0 +1,24 @@
+{
+    "files.associations": {
+        "common_macro_test.h": "c",
+        "circular_array.h": "c",
+        "stdio.h": "c",
+        "test_utils.h": "c",
+        "debug_print.h": "c",
+        "logic-network.h": "c",
+        "component-lib.h": "c",
+        "random.h": "c",
+        "logger.h": "c",
+        "no-nodes-solultion-searcher.h": "c",
+        "input-output.h": "c",
+        "nor-fitness-function.h": "c",
+        "fitness-estimation.helper.h": "c"
+    },
+    "terminal.integrated.profiles.windows": {
+        "Cygwin": {
+          "path": "C:\\cygwin64\\bin\\bash.exe",
+          "args": ["--login"],
+          "env": {"CHERE_INVOKING": "1"}
+        }
+      }
+}

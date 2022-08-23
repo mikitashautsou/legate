@@ -1,0 +1,65 @@
+├─────────┼─────────────────────────────────┤
+│    0    │        'Cottage cheese'         │ V
+│    1    │       'White bread 100g'        │ V
+│    2    │     'Boiled chicken fillet'     │ V
+│    3    │     'Boiled chicken fillet'     │ V
+│    4    │  'Pasta 75g dry/180g coocked'   │ V
+│    5    │ 'Fasola Piekny jas white beans' │ V
+│    6    │           'Carrot 5g'           │ V
+│    7    │           'Carrot 5g'           │ V
+│    8    │           'Carrot 5g'           │ V
+│    9    │            'Banana'             │ V
+│   10    │            'Banana'             │ V
+│   11    │           'Honey 10g'           │ V
+│   12    │           'Honey 10g'           │ V
+│   13    │           'Honey 10g'           │ V
+│   14    │ 'Helio Miesznka studencka 10g'  │ V
+│   15    │      'Apple 70g(1 apple)'       │ v
+│   16    │      'Apple 70g(1 apple)'       │ V
+│   17    │           'Sugar 10g'           │ V
+│   18    │           'Sugar 10g'           │ V
+│   19    │       'Orange juice 100g'       │ V
+│   20    │       'Orange juice 100g'       │ V
+│   21    │ 'Helio Miesznka studencka 10g'  │ V
+│   22    │ 'Helio Miesznka studencka 10g'  │ V
+│   23    │ 'Helio Miesznka studencka 10g'  │ V
+│   24    │ 'Helio Miesznka studencka 10g'  │ V
+│   25    │       'Peanut butter 30g'       │ V
+│   26    │     'Boiled chicken fillet'     │ V
+
+
+
+
+
+
+
+
+
+
+├─────────┼─────────────────────────────────┤
+│    0    │        'Cottage cheese'         │ V
+│    2    │     'Boiled chicken fillet'     │ +
+│    3    │     'Boiled chicken fillet'     │ +
+│    4    │  'Pasta 75g dry/180g coocked'   │ V
+│    5    │ 'Fasola Piekny jas white beans' │ +
+│    6    │           'Carrot 5g'           │ V
+│    7    │           'Carrot 5g'           │ V
+│    8    │           'Carrot 5g'           │ V
+│    9    │            'Banana'             │ V
+│   10    │            'Banana'             │ V
+│   11    │           'Honey 10g'           │ V
+│   12    │           'Honey 10g'           │ V
+│   13    │           'Honey 10g'           │ V
+│   14    │ 'Helio Miesznka studencka 10g'  │ V
+│   15    │      'Apple 70g(1 apple)'       │ +
+│   16    │      'Apple 70g(1 apple)'       │ +
+│   17    │           'Sugar 10g'           │ +
+│   18    │           'Sugar 10g'           │ +
+│   19    │       'Orange juice 100g'       │ +
+│   20    │       'Orange juice 100g'       │ +
+│   21    │ 'Helio Miesznka studencka 10g'  │ V
+│   22    │ 'Helio Miesznka studencka 10g'  │ V
+│   23    │ 'Helio Miesznka studencka 10g'  │ V
+│   24    │ 'Helio Miesznka studencka 10g'  │ V
+│   25    │       'Peanut butter 30g'       │ +
+│   26    │     'Boiled chicken fillet'     │ +

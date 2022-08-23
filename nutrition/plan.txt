@@ -1,0 +1,209 @@
+┌─────────┬─────────────────────────────────────────┐
+│ (index) │                 Values                  │
+├─────────┼─────────────────────────────────────────┤
+│    0    │           'Peanut butter 30g'           │
+│    1    │        'Buckwheat, coocked, 30g'        │
+│    2    │                'Banana'                 │
+│    3    │         'Boiled chicken fillet'         │
+│    4    │               'Honey 10g'               │
+│    5    │                'Banana'                 │
+│    6    │      'Pasta 75g dry/180g coocked'       │
+│    7    │     'Helio Miesznka studencka 10g'      │
+│    8    │                'Banana'                 │
+│    9    │           'Orange juice 100g'           │
+│   10    │               'Honey 10g'               │
+│   11    │               'Carrot 5g'               │
+│   12    │         'Boiled chicken fillet'         │
+│   13    │                'Banana'                 │
+│   14    │            'Egg(boiled) 50g'            │
+│   15    │      'Pasta 75g dry/180g coocked'       │
+│   16    │               'Sugar 10g'               │
+│   17    │               'Carrot 5g'               │
+│   18    │                'Banana'                 │
+│   19    │     'Helio Miesznka studencka 10g'      │
+│   20    │        'Buckwheat, coocked, 30g'        │
+│   21    │ 'Fasola Piekny jas white beans(boiled)' │
+│   22    │           'Peanut butter 30g'           │
+│   23    │     'Helio Miesznka studencka 10g'      │
+│   24    │            'Egg(boiled) 50g'            │
+│   25    │ 'Fasola Piekny jas white beans(boiled)' │
+│   26    │      'Pasta 75g dry/180g coocked'       │
+│   27    │        'Buckwheat, coocked, 30g'        │
+│   28    │           'Peanut butter 30g'           │
+│   29    │         'Boiled chicken fillet'         │
+│   30    │               'Sugar 10g'               │
+│   31    │            'Butter 82% 20g'             │
+│   32    │               'Sugar 10g'               │
+│   33    │         'Boiled chicken fillet'         │
+│   34    │            'Egg(boiled) 50g'            │
+│   35    │           'Orange juice 100g'           │
+│   36    │     'Helio Miesznka studencka 10g'      │
+│   37    │           'Peanut butter 30g'           │
+│   38    │                'Banana'                 │
+│   39    │               'Carrot 5g'               │
+│   40    │         'Boiled chicken fillet'         │
+│   41    │        'Buckwheat, coocked, 30g'        │
+│   42    │         'Boiled chicken fillet'         │
+│   43    │           'White bread 100g'            │
+│   44    │            'Cottage cheese'             │
+│   45    │          'Apple 70g(1 apple)'           │
+│   46    │            'Egg(boiled) 50g'            │
+│   47    │      'Pasta 75g dry/180g coocked'       │
+│   48    │         'Boiled chicken fillet'         │
+│   49    │         'Boiled chicken fillet'         │
+│   50    │        'Buckwheat, coocked, 30g'        │
+│   51    │         'Boiled chicken fillet'         │
+│   52    │            'Egg(boiled) 50g'            │
+│   53    │               'Carrot 5g'               │
+│   54    │         'Boiled chicken fillet'         │
+│   55    │                'Banana'                 │
+│   56    │           'Peanut butter 30g'           │
+│   57    │                'Banana'                 │
+│   58    │               'Sugar 10g'               │
+│   59    │            'Egg(boiled) 50g'            │
+│   60    │           'Peanut butter 30g'           │
+│   61    │ 'Fasola Piekny jas white beans(boiled)' │
+│   62    │           'Orange juice 100g'           │
+│   63    │        'Buckwheat, coocked, 30g'        │
+│   64    │                'Banana'                 │
+│   65    │            'Cottage cheese'             │
+│   66    │                'Banana'                 │
+│   67    │     'Helio Miesznka studencka 10g'      │
+│   68    │        'Buckwheat, coocked, 30g'        │
+│   69    │               'Honey 10g'               │
+│   70    │               'Carrot 5g'               │
+│   71    │           'Peanut butter 30g'           │
+│   72    │              'Radish 20g'               │
+│   73    │                'Banana'                 │
+│   74    │     'Helio Miesznka studencka 10g'      │
+│   75    │            'Egg(boiled) 50g'            │
+│   76    │     'Helio Miesznka studencka 10g'      │
+│   77    │               'Honey 10g'               │
+│   78    │           'Peanut butter 30g'           │
+│   79    │        'Buckwheat, coocked, 30g'        │
+│   80    │ 'Fasola Piekny jas white beans(boiled)' │
+│   81    │     'Helio Miesznka studencka 10g'      │
+│   82    │                'Banana'                 │
+│   83    │     'Helio Miesznka studencka 10g'      │
+│   84    │               'Sugar 10g'               │
+│   85    │               'Sugar 10g'               │
+│   86    │     'Helio Miesznka studencka 10g'      │
+│   87    │                'Banana'                 │
+│   88    │            'Cottage cheese'             │
+│   89    │               'Sugar 10g'               │
+│   90    │               'Sugar 10g'               │
+│   91    │               'Carrot 5g'               │
+│   92    │      'Pasta 75g dry/180g coocked'       │
+│   93    │               'Honey 10g'               │
+│   94    │               'Honey 10g'               │
+│   95    │        'Buckwheat, coocked, 30g'        │
+│   96    │      'Pasta 75g dry/180g coocked'       │
+│   97    │               'Sugar 10g'               │
+│   98    │           'Peanut butter 30g'           │
+│   99    │               'Honey 10g'               │
+│   100   │      'Pasta 75g dry/180g coocked'       │
+│   101   │               'Honey 10g'               │
+│   102   │                'Banana'                 │
+│   103   │        'Buckwheat, coocked, 30g'        │
+│   104   │            'Egg(boiled) 50g'            │
+│   105   │            'Egg(boiled) 50g'            │
+│   106   │         'Boiled chicken fillet'         │
+│   107   │               'Honey 10g'               │
+│   108   │                'Banana'                 │
+│   109   │                'Banana'                 │
+│   110   │           'Peanut butter 30g'           │
+│   111   │         'Boiled chicken fillet'         │
+│   112   │            'Butter 82% 20g'             │
+│   113   │            'Cottage cheese'             │
+│   114   │               'Honey 10g'               │
+│   115   │            'Egg(boiled) 50g'            │
+│   116   │               'Honey 10g'               │
+│   117   │                'Banana'                 │
+│   118   │                'Banana'                 │
+│   119   │      'Pasta 75g dry/180g coocked'       │
+│   120   │           'Orange juice 100g'           │
+│   121   │          'Apple 70g(1 apple)'           │
+│   122   │            'Egg(boiled) 50g'            │
+│   123   │ 'Fasola Piekny jas white beans(boiled)' │
+│   124   │           'White bread 100g'            │
+│   125   │                'Banana'                 │
+│   126   │        'Buckwheat, coocked, 30g'        │
+│   127   │               'Carrot 5g'               │
+│   128   │            'Egg(boiled) 50g'            │
+│   129   │                'Banana'                 │
+│   130   │                'Banana'                 │
+│   131   │     'Helio Miesznka studencka 10g'      │
+│   132   │            'Cottage cheese'             │
+│   133   │                'Banana'                 │
+│   134   │           'Peanut butter 30g'           │
+│   135   │           'Peanut butter 30g'           │
+│   136   │           'Orange juice 100g'           │
+│   137   │                'Banana'                 │
+│   138   │      'Pasta 75g dry/180g coocked'       │
+│   139   │ 'Fasola Piekny jas white beans(boiled)' │
+│   140   │         'Boiled chicken fillet'         │
+│   141   │        'Buckwheat, coocked, 30g'        │
+│   142   │          'Apple 70g(1 apple)'           │
+│   143   │              'Walnuts 10g'              │
+│   144   │         'Boiled chicken fillet'         │
+│   145   │                'Banana'                 │
+│   146   │            'Cottage cheese'             │
+│   147   │               'Carrot 5g'               │
+│   148   │ 'Fasola Piekny jas white beans(boiled)' │
+│   149   │               'Sugar 10g'               │
+│   150   │               'Sugar 10g'               │
+│   151   │            'Egg(boiled) 50g'            │
+│   152   │               'Honey 10g'               │
+│   153   │               'Honey 10g'               │
+│   154   │                'Banana'                 │
+│   155   │           'Peanut butter 30g'           │
+│   156   │      'Pasta 75g dry/180g coocked'       │
+│   157   │          'Apple 70g(1 apple)'           │
+│   158   │               'Sugar 10g'               │
+│   159   │      'Pasta 75g dry/180g coocked'       │
+│   160   │         'Boiled chicken fillet'         │
+│   161   │               'Honey 10g'               │
+│   162   │     'Helio Miesznka studencka 10g'      │
+│   163   │                'Banana'                 │
+│   164   │     'Helio Miesznka studencka 10g'      │
+│   165   │            'Egg(boiled) 50g'            │
+│   166   │           'Orange juice 100g'           │
+│   167   │     'Helio Miesznka studencka 10g'      │
+│   168   │           'Orange juice 100g'           │
+│   169   │            'Egg(boiled) 50g'            │
+│   170   │            'Egg(boiled) 50g'            │
+│   171   │                'Banana'                 │
+│   172   │         'Boiled chicken fillet'         │
+│   173   │     'Helio Miesznka studencka 10g'      │
+│   174   │     'Helio Miesznka studencka 10g'      │
+│   175   │                'Banana'                 │
+│   176   │                'Banana'                 │
+│   177   │            'Egg(boiled) 50g'            │
+│   178   │            'Cottage cheese'             │
+│   179   │     'Helio Miesznka studencka 10g'      │
+│   180   │           'White bread 100g'            │
+│   181   │               'Honey 10g'               │
+│   182   │           'Peanut butter 30g'           │
+│   183   │            'Cottage cheese'             │
+│   184   │               'Sugar 10g'               │
+│   185   │        'Buckwheat, coocked, 30g'        │
+│   186   │     'Helio Miesznka studencka 10g'      │
+└─────────┴─────────────────────────────────────────┘
+┌────────────────┬────────────────────┬─────────┐
+│    (index)     │        plan        │ target  │
+├────────────────┼────────────────────┼─────────┤
+│    calories    │ 17489.27999999999  │  17500  │
+│  cholesterol   │       5213.9       │    0    │
+│     sodium     │ 7003.013571428571  │  7000   │
+│   vitamin_a    │ 17368.40999999999  │  17500  │
+│ saturated_fats │ 133.32092857142854 │    0    │
+│      fats      │ 899.0012857142851  │   483   │
+│    protein     │ 984.4731428571434  │ 984.375 │
+│  carbohydrate  │ 2409.957857142859  │ 2406.25 │
+│     sugar      │ 1119.9461428571433 │    0    │
+│   potassium    │ 25641.827142857175 │  28700  │
+│     fiber      │ 237.81942857142832 │   238   │
+│   vitamin_c    │ 631.2209999999999  │   630   │
+└────────────────┴────────────────────┴─────────┘
+fitness:  0.671764094735189
+

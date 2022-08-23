@@ -1,0 +1,10 @@
+#define set_bit(array, k) \
+    ({ array[k / TYPE_SIZE] |= 1 << (k % TYPE_SIZE); })
+
+#define clear_bit(array, k) \
+    ({ array[k / TYPE_SIZE] &= ~(1 << (k % TYPE_SIZE)); })
+
+#define test_bit(array, k)                                      \
+    ({                                                          \
+        ((array[k / TYPE_SIZE] & (1 << (k % TYPE_SIZE))) != 0); \
+    })

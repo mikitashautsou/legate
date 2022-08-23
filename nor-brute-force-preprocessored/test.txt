@@ -1,0 +1,21 @@
+
+
+
+
+
+
+
+EQ(A, B, C)
+
+
+NOR(#1)
+INPUT(#2)
+INPUT(#3)
+OUTPUT(#4)
+
+CONNECT(#2, #1, 0)
+CONNECT(#2, #1, 1)
+CONNECT(#1, #4)
+
+
+

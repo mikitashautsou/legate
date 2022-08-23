@@ -1,0 +1,31 @@
+
+
+
+RESET_PTR = <<<<<<<<
+A = RESET_PTR >
+B = RESET_PTR >>
+
+
+MOV A B => 
+
+
+SHOW A
+
+MOV a, b
+------
+
+
+
+logic_network = {
+    content: int[][];
+    size: 0;
+}
+
+
+func test(logic_network, b, c) {
+    logic_network.size
+    
+}
+
+
+test(3, 4, 5)

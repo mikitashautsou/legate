@@ -1,0 +1,1 @@
+node collections/circular-array/circular-array.test.js > source.c && gcc source.c -ocompiled && ./compiled
