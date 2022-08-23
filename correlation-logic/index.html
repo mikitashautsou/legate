@@ -1,0 +1,194 @@
+<html>
+
+<head>
+    <title>Sample Expert System</title>
+</head>
+
+<body>
+
+    <h2>Creepy Crawlie</h2>
+
+    <p>
+        This is a simple expert system that allows you to identify creepy crawlies that you might find in the garden by
+        asking you a few questions. At the moment it is very simple and can only pinpoint a few, but you can make it
+        more powerful by adding more questions and logic.
+    </p>
+
+    <p>
+        When you have a particular creepy crawlie in mind, click the button below to start the process.
+    </p>
+
+    <div align="center"><input type="button" value="Start" onclick="run_ES();" /></div>
+    <div name="report" id="report"></div>
+
+</body>
+<script language="JavaScript">
+    var all_done = false;
+    var identity = "";
+    var ans, s = "";
+    var YES = 1;
+    var NO = 0;
+    var DONT_KNOW = -1;
+
+    // DRAGONFLY,LADYBIRD,TARANTULA,WOODLOUSE,ANT,TERMITE,HOUSEFLY,
+    // BUTTERFLY,MOTH,HONEY BEE,WASP,CENTIPEDE,GRASSHOPPER,LOCUST
+
+    // Here are the various qualities
+    var num_legs = DONT_KNOW;
+    var wings = DONT_KNOW;
+    var compound_eyes = DONT_KNOW;
+    var multicoloured = DONT_KNOW;
+    var social = DONT_KNOW;
+    var group_class = DONT_KNOW;
+    var sting = DONT_KNOW;
+    var big = DONT_KNOW;
+
+    var condition = new Array("(num_legs == DONT_KNOW)",
+        "(wings == DONT_KNOW)",
+        "(compound_eyes == DONT_KNOW)",
+        "(social == DONT_KNOW)",
+        "(multicoloured == DONT_KNOW)",
+        "(num_legs == 6)",
+        "(num_legs == 8)",
+        "(compound_eyes == YES) && (multicoloured == YES)",
+        "(social == YES) && (multicoloured == YES)",
+        "(social == YES) && (multicoloured == NO) && (wings == YES)",
+        "(social == YES) && (multicoloured == NO) && (wings == NO)",
+        "(big == NO) && (compound_eyes == NO) && (multicoloured == NO) && (group_class == 'insect')",
+        "(big == YES) && (compound_eyes == NO) && (multicoloured == NO) && (group_class == 'insect')",
+        "(sting == DONT_KNOW)",
+        "(social == YES) && (sting == NO)",
+        "(big == DONT_KNOW)",
+        "(big == NO) && (group_class == 'arachnid')",
+        "(big == YES) && (group_class == 'arachnid')",
+        "(group_class == 'arachnid')",
+        "(group_class == 'arachnid')",
+        "(group_class == 'arachnid')",
+        "(group_class == 'arachnid')");
+    var priority = new Array(1, 1, 1, 1, 1, 4, 4, 5, 5, 6, 6, 7, 7, 1, 5, 1, 5, 5, 2, 2, 2, 2);
+    var num_rules = condition.length;
+    var rule_dead = new Array();
+    for (var rule = 0; rule < num_rules; rule++)
+        rule_dead[rule] = false;
+
+    function run_ES() {
+        while (!all_done) {
+            var which_fires = -1;
+            var highest_priority = -1;
+            // Determine which rule fires
+            for (rule = 0; rule < num_rules; rule++)
+                if (!rule_dead[rule] && eval(condition[rule]))
+                    if (priority[rule] > highest_priority) {
+                        highest_priority = priority[rule];
+                        which_fires = rule;
+                    }
+            // Fire selected rule
+            switch (which_fires) {
+                case 0: var ans = ask("How many legs does the animal have?\nA - 6\nB - 8\nC - more than 8", false);
+                    switch (ans) {
+                        case 'A': num_legs = 6; add("num_legs = 6<br />"); break;
+                        case 'B': num_legs = 8; add("num_legs = 8<br />"); break;
+                        case 'C': num_legs = "lots"; add("num_legs = 'lots'<br />");
+                    }
+                    break;
+                case 1: wings = ask("Does the animal have wings?", true);
+                    break;
+                case 2: compound_eyes = ask("Does the animal have large compound eyes?", true);
+                    break;
+                case 3: social = ask("Does the animal live in large social groups?", true);
+                    break;
+                case 4: coloured = ask("Is the animal brightly coloured/multicoloured?", true);
+                    break;
+                case 5: group_class = "insect";    // num_legs = 6, so must be an insect
+                    add(condition[5] + "<br />THEREFORE: group_class = 'insect'<br />");
+                    break;
+                case 6: group_class = "arachnid";  // num_legs = 8, so must be an arachnid
+                    add(condition[6] + "<br />THEREFORE: group_class = 'arachnid'<br />");
+                    break;
+                case 7: identity = "DRAGONFLY";    // Multicoloured and large compound eyes
+                    add(condition[7] + "<br />THEREFORE: identity = 'DRAGONFLY'<br />");
+                    break;
+                case 8: identity = "WASP";         // Black and yellow, lives in large wasps nests
+                    add(condition[8] + "<br />THEREFORE: identity = 'WASP'<br />");
+                    break;
+                case 9: identity = "HONEY BEE";   // Dull colours, wings, lives in hives
+                    add(condition[9] + "<br />THEREFORE: identity = 'HONEY BEE'<br />");
+                    break;
+                case 10: identity = "ANT";         // Dull colours, no wings, lives in hives
+                    add(condition[10] + "<br />THEREFORE: identity = 'ANT'<br />");
+                    break;
+                case 11: identity = "LADYBIRD";    // Small, red and black, no compound eyes
+                    add(condition[11] + "<br />THEREFORE: identity = 'LADYBIRD'<br />");
+                    break;
+                case 12: identity = "BUTTERFLY";   // Large, brightly coloured, no compound eyes
+                    add(condition[12] + "<br />THEREFORE: identity = 'BUTTERFLY'<br />");
+                    break;
+                case 13: sting = ask("Does the animal bite/sting?", true);
+                    break;
+                case 14: identity = "TERMITE";     // Sociable, but don't sting
+                    add(condition[14] + "<br />THEREFORE: identity = 'TERMITE'<br />");
+                    break;
+                case 15: big = ask("Is the creature bigger than 1cm long?", true);
+                    break;
+                case 16: identity = "FLEA";     // Very small arachnid
+                    add(condition[16] + "<br />THEREFORE: identity = 'FLEA'<br />");
+                    break;
+                case 17: identity = "TARANTULA";     // Very large arachnid
+                    add(condition[17] + "<br />THEREFORE: identity = 'TARANTULA'<br />");
+                    break;
+                case 18: wings = NO;                // No arachnid has wings
+                    add(condition[18] + "<br />THEREFORE: no wings<br />");
+                    break;
+                case 19: compound_eyes = NO;        // No arachnid has compound eyes
+                    add(condition[19] + "<br />THEREFORE: no compound eyes<br />");
+                    break;
+                case 20: multicoloured = NO;        // No arachnid is multicoloured
+                    add(condition[20] + "<br />THEREFORE: not multicoloured<br />");
+                    break;
+                case 21: social = NO;               // No arachnid lives in large social groups
+                    add(condition[21] + "<br />THEREFORE: doesn't live in social groups<br />");
+                    break;
+                default: all_done = true;
+            }
+            if (which_fires > -1)    // Stop that rule from firing again
+                rule_dead[which_fires] = true;
+            if (identity != "" || which_fires == -1)   // No rule fires, or we've identified the creature
+                all_done = true;
+        }
+        if (identity != "")
+            add("<h3>I have identified the creepy crawlie: " + identity + "</h2>");
+        else
+            add("<h3>I'm sorry. I have not been able to identify that creepy crawlie.</h2>");
+    }
+
+    function add(text) {
+        s += text;
+        document.getElementById("report").innerHTML = s;
+    }
+
+    function ask(question_text, yes_no) {
+        if (yes_no)
+            var default_text = "Enter Y or N or click Cancel for don't know";
+        else
+            var default_text = "Click on cancel if you don't know";
+        add("ASK: " + question_text + "<br />");
+        var ans = prompt(question_text, default_text);
+        if (ans == null || ans == "") {
+            add(" ANSWER: Don't know<br />");
+            return DONT_KNOW;
+        }
+        ans = ans.toUpperCase();
+        if (ans == "Y") {
+            add(" ANSWER: Yes<br />");
+            return YES;
+        }
+        if (ans == "N") {
+            add(" ANSWER: No<br />");
+            return NO;
+        }
+        add(" ANSWER: " + ans + "<br />");
+        return ans;
+    }
+</script>
+
+</html>

@@ -1,0 +1,15 @@
+i	honey	glasses	coffee	isSunny isCloudy isRainy	headaches?	start sleep	end sleep	clothes	working pose	spoort	headphones	windows opened	preasure(mbar)	juice	weekend	sleep time	tireness	night phone	morning phone time	driving around the city	food delivery
+1	0	1	0	SUNNY/25	1	23	10	1	laying	1	0	0	?	0	0	11	?	?	?	0	1
+2	0	1	0	CLOUDY/21	0	23	9	1	LAYING	0	0	1	1014	0	0	10	?	?	?	0	1
+3	0	1	0	RAINY/21	0	23	10	1	SITTING	0	1	1	1016	0	1	11	1	?	?	0	1
+4	0	1	0	CLODY/21	0	22	10	1	SITTING	0	1	1	1022	0	1	12	0	?	?	0	1
+5	0	1	0	SUNNY/18	0	22	8	1	SITTING	1	1	1	1024	0	0	10	0	0	0	0	1
+6	0	1	0	RAINY/29	0	24	9	1	SITTING	0	1	1	1021	0	0	9	0	0	0	1	1
+20	0	1	0	SUNNY/26	1	22	9	1	SITTING	0	1	1	1022	0	0	11	0	0	0	1	1
+21	0	1	0	SUNNY/33	1	24	8	1	SITTING	0	1	1	1021	0	0	8	0	60	60	0	1
+22	0	1	0	SUNNY/32	1	24	8	1	SITTING	0	1	1	1016	1	0	8	0	20	20	0	0
+23	0	1	1	RAINY/33	0	1	10	0	SITTING	0	1	1	1013	1	1	9	0	?	?	0	0
+24	1	1	1	CLOUDY/24	0	1	11	0	SITTING	0	1	1	1019	1	1	10	0	?	?	0	0
+25	1	0	1	CLOUDY/27	0	0	9	0	SITTING	0	1	1	1018	1	0	9	0	30	30	0	0
+26	0	0	1	RAINY/27	0	1	9	0	SITTING	0	1	1	1008	1	0	7	0	0	0	0	0
+27	0	0	1	SUNNY/23	0.7	1	9	0	SITTING	0	1	1	1015	1	0	7	0	60	60	0	0
