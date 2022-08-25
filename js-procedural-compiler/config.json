@@ -1,0 +1,592 @@
+{
+  "keys": [
+    { "sequence": "=", "ctrl": false, "meta": false, "shift": false },
+    {
+      "sequence": "\r",
+      "name": "return",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "s",
+      "name": "s",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "d",
+      "name": "d",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "1",
+      "name": "1",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    { "sequence": "!", "ctrl": false, "meta": false, "shift": false },
+    { "sequence": "+", "ctrl": false, "meta": false, "shift": false },
+    {
+      "sequence": "2",
+      "name": "2",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    { "sequence": "@", "ctrl": false, "meta": false, "shift": false },
+    {
+      "sequence": "3",
+      "name": "3",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    { "sequence": "#", "ctrl": false, "meta": false, "shift": false },
+    {
+      "sequence": "4",
+      "name": "4",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    { "sequence": "$", "ctrl": false, "meta": false, "shift": false },
+    {
+      "sequence": "5",
+      "name": "5",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    { "sequence": "%", "ctrl": false, "meta": false, "shift": false },
+    {
+      "sequence": "\u001b[D",
+      "name": "left",
+      "ctrl": false,
+      "meta": false,
+      "shift": false,
+      "code": "[D"
+    },
+    {
+      "sequence": "\u001b[1;2D",
+      "name": "left",
+      "ctrl": false,
+      "meta": false,
+      "shift": true,
+      "code": "[D"
+    },
+    {
+      "sequence": "\u001b[1;2C",
+      "name": "right",
+      "ctrl": false,
+      "meta": false,
+      "shift": true,
+      "code": "[C"
+    },
+    {
+      "sequence": "\u001b[C",
+      "name": "right",
+      "ctrl": false,
+      "meta": false,
+      "shift": false,
+      "code": "[C"
+    },
+    { "sequence": "^", "ctrl": false, "meta": false, "shift": false },
+    {
+      "sequence": "6",
+      "name": "6",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    { "sequence": "&", "ctrl": false, "meta": false, "shift": false },
+    {
+      "sequence": "7",
+      "name": "7",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    { "sequence": "*", "ctrl": false, "meta": false, "shift": false },
+    {
+      "sequence": "8",
+      "name": "8",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    { "sequence": "(", "ctrl": false, "meta": false, "shift": false },
+    {
+      "sequence": "9",
+      "name": "9",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    { "sequence": ")", "ctrl": false, "meta": false, "shift": false },
+    {
+      "sequence": "0",
+      "name": "0",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    { "sequence": "_", "ctrl": false, "meta": false, "shift": false },
+    { "sequence": "-", "ctrl": false, "meta": false, "shift": false },
+    {
+      "sequence": "\u001b[3~",
+      "name": "delete",
+      "ctrl": false,
+      "meta": false,
+      "shift": false,
+      "code": "[3~"
+    },
+    {
+      "sequence": "\u001b[3;2~",
+      "name": "delete",
+      "ctrl": false,
+      "meta": false,
+      "shift": true,
+      "code": "[3~"
+    },
+    {
+      "sequence": "q",
+      "name": "q",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "Q",
+      "name": "q",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "w",
+      "name": "w",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "W",
+      "name": "w",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "e",
+      "name": "e",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "E",
+      "name": "e",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "r",
+      "name": "r",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "R",
+      "name": "r",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "t",
+      "name": "t",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "T",
+      "name": "t",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "y",
+      "name": "y",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "Y",
+      "name": "y",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "u",
+      "name": "u",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "U",
+      "name": "u",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "i",
+      "name": "i",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "I",
+      "name": "i",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "o",
+      "name": "o",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "O",
+      "name": "o",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "p",
+      "name": "p",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "P",
+      "name": "p",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    { "sequence": "|", "ctrl": false, "meta": false, "shift": false },
+    { "sequence": "\\", "ctrl": false, "meta": false, "shift": false },
+    {
+      "sequence": "",
+      "name": "backspace",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "\b",
+      "name": "backspace",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "a",
+      "name": "a",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "A",
+      "name": "a",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "D",
+      "name": "d",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "F",
+      "name": "f",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "f",
+      "name": "f",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "S",
+      "name": "s",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "g",
+      "name": "g",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "G",
+      "name": "g",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "h",
+      "name": "h",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "H",
+      "name": "h",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "j",
+      "name": "j",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "J",
+      "name": "j",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "k",
+      "name": "k",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "K",
+      "name": "k",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "l",
+      "name": "l",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "L",
+      "name": "l",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    { "sequence": ";", "ctrl": false, "meta": false, "shift": false },
+    { "sequence": "'", "ctrl": false, "meta": false, "shift": false },
+    { "sequence": "\"", "ctrl": false, "meta": false, "shift": false },
+    {
+      "sequence": "Z",
+      "name": "z",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "z",
+      "name": "z",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "X",
+      "name": "x",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "x",
+      "name": "x",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "C",
+      "name": "c",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "c",
+      "name": "c",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "v",
+      "name": "v",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "V",
+      "name": "v",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "b",
+      "name": "b",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "B",
+      "name": "b",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    {
+      "sequence": "n",
+      "name": "n",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "m",
+      "name": "m",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    { "sequence": ",", "ctrl": false, "meta": false, "shift": false },
+    { "sequence": ".", "ctrl": false, "meta": false, "shift": false },
+    { "sequence": "/", "ctrl": false, "meta": false, "shift": false },
+    { "sequence": "?", "ctrl": false, "meta": false, "shift": false },
+    { "sequence": ">", "ctrl": false, "meta": false, "shift": false },
+    { "sequence": "<", "ctrl": false, "meta": false, "shift": false },
+    {
+      "sequence": "M",
+      "name": "m",
+      "ctrl": false,
+      "meta": false,
+      "shift": true
+    },
+    { "sequence": "`", "ctrl": false, "meta": false, "shift": false },
+    { "sequence": "~", "ctrl": false, "meta": false, "shift": false },
+    {
+      "sequence": "\u001b[F",
+      "name": "end",
+      "ctrl": false,
+      "meta": false,
+      "shift": false,
+      "code": "[F"
+    },
+    {
+      "sequence": "\u001b[H",
+      "name": "home",
+      "ctrl": false,
+      "meta": false,
+      "shift": false,
+      "code": "[H"
+    },
+    {
+      "sequence": "\u001b[6~",
+      "name": "pagedown",
+      "ctrl": false,
+      "meta": false,
+      "shift": false,
+      "code": "[6~"
+    },
+    {
+      "sequence": "\u001b[5~",
+      "name": "pageup",
+      "ctrl": false,
+      "meta": false,
+      "shift": false,
+      "code": "[5~"
+    },
+    {
+      "sequence": " ",
+      "name": "space",
+      "ctrl": false,
+      "meta": false,
+      "shift": false
+    },
+    {
+      "sequence": "\u001b[Z",
+      "name": "tab",
+      "ctrl": false,
+      "meta": false,
+      "shift": true,
+      "code": "[Z"
+    },
+    {
+      "sequence": "\u001b[1;2A",
+      "name": "up",
+      "ctrl": false,
+      "meta": false,
+      "shift": true,
+      "code": "[A"
+    },
+    {
+      "sequence": "\u001b[1;2B",
+      "name": "down",
+      "ctrl": false,
+      "meta": false,
+      "shift": true,
+      "code": "[B"
+    },
+    { "sequence": "{", "ctrl": false, "meta": false, "shift": false },
+    { "sequence": "}", "ctrl": false, "meta": false, "shift": false }
+  ]
+}
